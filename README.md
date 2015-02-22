@@ -1,5 +1,7 @@
 Name Machine
 -----------------------
+[![Build Status](https://travis-ci.org/ajbrown/NameMachine.svg?branch=develop)](https://travis-ci.org/ajbrown/NameMachine)
+
 
 Name machine is a Java utility for generating random names with realistic probabilities of occurrence.  In other words,
 names that occur more often in real life will also occur more often in the random generation.
