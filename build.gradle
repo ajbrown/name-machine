@@ -62,3 +62,11 @@ gradle.taskGraph.whenReady {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'NameMachine',
+                   'Implementation-Version': version,
+                   'Main-Class' : 'org.ajbrown.namemachine.NameMachine'
+    }
+}
