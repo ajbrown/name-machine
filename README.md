@@ -2,6 +2,7 @@ Name Machine
 -----------------------
 [![Build Status](https://travis-ci.org/ajbrown/NameMachine.svg?branch=master)](https://travis-ci.org/ajbrown/NameMachine)
 [![Coverage Status](https://coveralls.io/repos/ajbrown/NameMachine/badge.svg?branch=master)](https://coveralls.io/r/ajbrown/NameMachine)
+[![Download](https://api.bintray.com/packages/ajbrown/maven/NameMachine/images/download.svg) ](https://bintray.com/ajbrown/maven/NameMachine/_latestVersion)
 [![Join the chat at https://gitter.im/ajbrown/NameMachine](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ajbrown/NameMachine?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
