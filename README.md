@@ -72,7 +72,7 @@ dependencies {
 <repositories>
   <repository>
     <id>bintray.ajbrown</id>
-    <url>https://maven.java.net/content/repositories/public/</url>
+    <url>https://dl.bintray.com/ajbrown/maven</url>
   </repository>
 </repositories>
 
