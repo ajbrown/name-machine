@@ -53,7 +53,9 @@ license {
         java   = 'SLASHSTAR_STYLE'
         groovy = 'SLASHSTAR_STYLE'
     }
-    ext.year = '2014'
+    ext.year = '2015'
+
+    excludes([ "**/*.txt" ])
 }
 
 licenseTest {
