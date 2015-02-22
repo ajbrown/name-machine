@@ -49,6 +49,42 @@ names in ranked order is the Frequency in percent, Cumulative frequency in perce
 We randomly select a name from the list by generating a random floating point number, and picking the first name that has a higher or equal
 cumulative frequency than our random number.
 
+### Installing
+
+Release versions of this library are available on my Bintray maven repository.  It is not yet available in Maven Central
+or JCenter, but hopefully that will change soon.  In the mean time, add the following repository..
+
+...to build.gradle:
+```groovy
+repositories {
+    maven { url 'https://dl.bintray.com/ajbrown/maven' }
+}
+
+dependencies {
+    compile 'org.ajbrown:NameMachine:0.1.0'
+}
+```
+
+
+...to pom.xml:
+```xml
+
+<repositories>
+  <repository>
+    <id>bintray.ajbrown</id>
+    <url>https://maven.java.net/content/repositories/public/</url>
+  </repository>
+</repositories>
+
+<dependencies>
+ <dependency>
+   <groupId>org.ajbrown</groupId>
+   <artifactId>NameMachine</artifactId>
+   <version>0.1.0</version>
+ </dependency>
+</dependencies>
+```
+
 #### Contributing
 
 Contributions are wanted and appreciated!  Please submit your suggestions as issues, or open a pull request.  Please
