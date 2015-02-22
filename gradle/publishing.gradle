@@ -12,16 +12,17 @@ apply plugin: 'com.jfrog.bintray'
 jar {
     manifest {
         attributes(
-            'Built-By': System.properties['user.name'],
-            'Created-By': System.properties['java.version'] + " (" + System.properties['java.vendor'] + " " + System.properties['java.vm.version'] + ")",
-            'Build-Date': project.buildDate,
-            'Build-Time': project.buildTime,
-            'Specification-Title': project.name,
-            'Specification-Version': project.version,
-            'Specification-Vendor': project.project_vendor,
-            'Implementation-Title': project.name,
-            'Implementation-Version': project.version,
-            'Implementation-Vendor': project.project_vendor
+                'Built-By': System.properties['user.name'],
+                'Created-By': System.properties['java.version'] + " (" + System.properties['java.vendor'] + " " + System.properties['java.vm.version'] + ")",
+                'Build-Date': project.buildDate,
+                'Build-Time': project.buildTime,
+                'Main-Class' : 'org.ajbrown.namemachine.NameMachine',
+                'Specification-Title': project.name,
+                'Specification-Version': project.version,
+                'Specification-Vendor': project.project_vendor,
+                'Implementation-Title': project.name,
+                'Implementation-Version': project.version,
+                'Implementation-Vendor': project.project_vendor
         )
     }
 }
@@ -30,7 +31,7 @@ def pomConfig = {
     name project.name
     description project.project_description
     url project.project_url
-    inceptionYear '2014'
+    inceptionYear '2015'
     licenses {
         license([:]) {
             name 'The Apache Software License, Version 2.0'
@@ -43,7 +44,7 @@ def pomConfig = {
     }
     developers {
         [
-            neo : 'Thomas Anderson'
+                ajbrown: 'A.J. Brown'
         ].each { devId, devName ->
             developer {
                 id devId
@@ -76,9 +77,9 @@ bintray {
     user = project.bintrayUsername
     key = project.bintrayApiKey
     publications = ['mavenCustom']
+    publish = true
     pkg {
         repo = project.project_bintray_repo
-        userOrg = project.project_bintray_org
         name = project.name
         desc = project.project_description
         licenses = ['Apache-2.0']

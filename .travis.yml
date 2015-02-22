@@ -1,5 +1,14 @@
 language: java
-script: ./gradlew clean build cobertura
-jdk: oraclejdk7
-env: TERM=dumb
-after_success: ./gradlew coveralls
+script: "./gradlew clean build cobertura"
+jdk:
+- oraclejdk8
+- oraclejdk7
+env:
+  matrix:
+  - TERM=dumb
+  global:
+  - secure: nruTpnbQKv7cxSx91U6to1Lk0FA1AJhRKQJiFx0JBJ2ZdGJugoHt8ck1Jca+XcBzEZODOvVOg8JaZ6llnzPYVfnQE6RFbLPIDS17Z/l/5uiPRFMiVPFEeZ8sbojzY+Ee1SJThNzLH+Q97CkjMc03hgqQ/76lANPGCU0gz/nXWqM=
+  - secure: K3p+GOeQPZKVKqGPPavt+OJa09zsnTnT+edguiFqc0uMmOr+MGMAYMAtOOfEqq5QxC4fo3ZlQ/HY9ptoaGTHFykOrWintrHSLzcasdwk1nAezPKUpmlRS6AUf3fbBdE7VKQ28ArDyczYXlWThOUipXX1kuHi/Oa1wRjigZPxneY=
+after_success:
+- "./gradlew coveralls"
+- if [ "$TRAVIS_BRANCH" == "master" ] && [ ! $TRAVIS_PULL_REQUEST ]; then ./gradlew bintrayUpload -PbintrayUsername=$BINTRAY_USER -PbintrayApiKey=$BINTRAY_API_KEY; fi
