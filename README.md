@@ -1,6 +1,8 @@
 Name Machine
 -----------------------
-[![Build Status](https://travis-ci.org/ajbrown/NameMachine.svg?branch=develop)](https://travis-ci.org/ajbrown/NameMachine)
+[![Build Status](https://travis-ci.org/ajbrown/NameMachine.svg?branch=master)](https://travis-ci.org/ajbrown/NameMachine)
+[![Coverage Status](https://coveralls.io/repos/ajbrown/NameMachine/badge.svg?branch=master)](https://coveralls.io/r/ajbrown/NameMachine)
+[![Join the chat at https://gitter.im/ajbrown/NameMachine](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ajbrown/NameMachine?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
 Name machine is a Java utility for generating random names with realistic probabilities of occurrence.  In other words,
@@ -46,3 +48,8 @@ names in ranked order is the Frequency in percent, Cumulative frequency in perce
 
 We randomly select a name from the list by generating a random floating point number, and picking the first name that has a higher or equal
 cumulative frequency than our random number.
+
+#### Contributing
+
+Contributions are wanted and appreciated!  Please submit your suggestions as issues, or open a pull request.  Please
+target the develop branch!
