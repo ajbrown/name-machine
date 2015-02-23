@@ -9,7 +9,6 @@ Name Machine
 Name machine is a Java utility for generating random names with realistic probabilities of occurrence.  In other words,
 names that occur more often in real life will also occur more often in the random generation.
 
-
 It's lightweight, and has no dependencies.  It loves being used to generate sample data for tests and demos!
 
 
@@ -37,8 +36,9 @@ java -jar NameMachine.jar 5000
 
 #### Limitations
 
-- Name generation is bound to integer max, so you can only generate integer max names in one pass.  If you need more,
- just make more passes.
+- The maximum number of random names you can generate in one pass is bound to integer max.  However, that's on order of 2 billion names on 32 bit systems.  At the time of writing there were only an estimated 7 billion humans on the planet, and most of those people don't have American names.  I just wasted your time describing a limitation that is actually not a limitation.
+
+- There are only 4275 female first names and 1219 male first names represented.  However, with the 88 thousand last names, there are about *380 million* female f and *108 million* male full name combinations available.
 
 
 #### How Does it Work?
@@ -50,7 +50,48 @@ names in ranked order is the Frequency in percent, Cumulative frequency in perce
 We randomly select a name from the list by generating a random floating point number, and picking the first name that has a higher or equal
 cumulative frequency than our random number.
 
+#### Installing
+
+Release versions of this library are sync'ed with [jCenter](https://bintray.com/bintray/jcenter).  Installation is as simple as adding it as a dependency
+
+...to build.gradle:
+```groovy
+repositories {
+    jCenter()
+}
+
+dependencies {
+    compile 'org.ajbrown:NameMachine:0.1.0'
+}
+```
+
+
+...to pom.xml:
+```xml
+
+<repositories>
+  <repository>
+    <id>jcenter</id>
+    <url>http://jcenter.bintray.com</url>
+  </repository>
+</repositories>
+
+<dependencies>
+ <dependency>
+   <groupId>org.ajbrown</groupId>
+   <artifactId>NameMachine</artifactId>
+   <version>0.1.0</version>
+ </dependency>
+</dependencies>
+```
+
 #### Contributing
 
 Contributions are wanted and appreciated!  Please submit your suggestions as issues, or open a pull request.  Please
 target the develop branch!
+
+You can always contact me directly with your questions, suggestions, or friendly conversation:
+
+- *Email:* aj AT ajbrown DOT org
+- *Twitter:* [@adrianjbrown](https://twitter.com/adrianjbrown)
+- *Web:* [http://ajbrown.org](https://ajbrown.org)
