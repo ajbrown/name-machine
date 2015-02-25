@@ -106,16 +106,6 @@ public class NameGenerator {
     }
 
     /**
-     * Capitalize only the first letter of the given string.
-     *
-     * @param line the line of text to capitalize.
-     * @return the capitalized line.
-     */
-    private String capitalize(String line) {
-        return Character.toUpperCase(line.charAt(0)) + line.substring(1).toLowerCase();
-    }
-
-    /**
      * Pick a name from the specified TreeMap based on a random number.
      * @return the picked name.
      */
@@ -131,7 +121,7 @@ public class NameGenerator {
             }
         }
 
-        return capitalize( map.get(key) );
+        return map.get(key);
     }
 
     /**
@@ -148,7 +138,7 @@ public class NameGenerator {
             String line = reader.readLine();
             while (line != null) {
                 String[] fields = line.split("\\s+");
-                names.put(Float.parseFloat(fields[2]), fields[0].intern());
+                names.put(Float.parseFloat(fields[2]), fields[0]);
                 line = reader.readLine();
             }
         }
