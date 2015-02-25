@@ -1,7 +1,7 @@
 Name Machine
 -----------------------
-[![Build Status](https://travis-ci.org/ajbrown/NameMachine.svg?branch=master)](https://travis-ci.org/ajbrown/NameMachine)
-[![Coverage Status](https://coveralls.io/repos/ajbrown/NameMachine/badge.svg?branch=master)](https://coveralls.io/r/ajbrown/NameMachine)
+[![Build Status](https://travis-ci.org/ajbrown/NameMachine.svg?branch=develop)](https://travis-ci.org/ajbrown/NameMachine)
+[![Coverage Status](https://coveralls.io/repos/ajbrown/NameMachine/badge.svg?branch=develop)](https://coveralls.io/r/ajbrown/NameMachine)
 [![Join the chat at https://gitter.im/ajbrown/NameMachine](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ajbrown/NameMachine?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
