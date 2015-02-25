@@ -57,6 +57,29 @@ public class NameGenerator {
     }
 
     /**
+     * Generate a single name of either {@link org.ajbrown.namemachine.Gender}
+     * @return a randomly generated name.
+     */
+    public Name generateName() {
+        return generateName( null );
+    }
+
+    /**
+     * Generate a single name of the specified {@link org.ajbrown.namemachine.Gender}
+     * @param gender the gender of the name to generate
+     * @return a randomly generated name
+     */
+    public Name generateName( Gender gender ) {
+        if( gender == null ) {
+            gender = (random.nextFloat() * 100) > 48 ? Gender.FEMALE : Gender.MALE;
+        }
+        return new Name(
+            pickName( gender == Gender.FEMALE ? females : males ),
+            pickName( surnames ),
+            gender );
+    }
+
+    /**
      * Generate names for a specific gender.
      *
      * @param count the number of names to generate.
@@ -64,15 +87,10 @@ public class NameGenerator {
      * @return random names.
      */
     public List<Name> generateNames( int count, Gender gender ) {
-        if( gender == null ) {
-            return generateNames( count );
-        }
-
         List<Name> names = new ArrayList<>(count);
-        TreeMap<Float,String> source = gender == Gender.FEMALE ? females : males;
 
         for( int i = 0; i < count; i++ ) {
-            names.add( new Name( pickName( source ), pickName( surnames ), gender ) );
+            names.add( generateName( gender ) );
         }
 
         return names;
@@ -84,19 +102,7 @@ public class NameGenerator {
      * @return random names.
      */
     public List<Name> generateNames( int count ) {
-        List<Name> names = new ArrayList<>(count);
-
-        for( int i = 0; i < count; i++ ) {
-
-            // 48 percent chance for a male name
-            if( random.nextFloat() * 100 > 48 ) {
-                names.add( new Name( pickName( females ), pickName( surnames), Gender.FEMALE ) );
-            } else {
-                names.add( new Name( pickName( males ), pickName( surnames ), Gender.MALE ) );
-            }
-        }
-
-        return names;
+       return generateNames( count, null );
     }
 
     /**
@@ -142,7 +148,7 @@ public class NameGenerator {
             String line = reader.readLine();
             while (line != null) {
                 String[] fields = line.split("\\s+");
-                names.put(Float.parseFloat(fields[2]), fields[0]);
+                names.put(Float.parseFloat(fields[2]), fields[0].intern());
                 line = reader.readLine();
             }
         }
