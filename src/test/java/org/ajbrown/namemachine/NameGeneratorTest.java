@@ -20,11 +20,10 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
- * Unit Test for {@link Name}
+ * Unit Test for {@link org.ajbrown.namemachine.NameGenerator}
  * @author A.J. Brown <aj@ajbrown.org>
  */
 public class NameGeneratorTest {
@@ -40,7 +39,14 @@ public class NameGeneratorTest {
     @Test
     public void randomNamesAreGeneratedWithoutGender() {
 
-        List<Name> names = generator.generateNames( 1000 );
+        //The generator should be able to generate a single name
+        Name oneName = generator.generateName();
+        assertNotNull( oneName.getGender() );
+        assertNotNull( oneName.getFirstName() );
+        assertNotNull( oneName.getLastName() );
+
+        //The generator should be able to generate multiple names
+        List<Name> names = generator.generateNames(1000);
 
         assert names.size() == 1000;
 
@@ -60,13 +66,30 @@ public class NameGeneratorTest {
         // We should get both males and females.
         assertTrue( "Expected number of male names to be greater than 0", males > 0 );
         assertTrue( "Expected number of female names to be greater than 0", females > 0 );
+
+        // Test that the single name generator can generate a name
+        assertEquals(Name.class, generator.generateName().getClass());
+        assertNotNull( generator.generateName() );
     }
 
     @Test
     public void randomNamesAreGeneratedWithGender() {
 
-        List<Name> femaleNames = generator.generateNames( 1000, Gender.FEMALE );
-        List<Name> maleNames   = generator.generateNames( 1900, Gender.MALE );
+        //The generator should be able to generate a single name
+        Name oneMale = generator.generateName( Gender.MALE );
+        assertSame( Gender.MALE, oneMale.getGender() );
+        assertNotNull( oneMale.getFirstName() );
+        assertNotNull( oneMale.getLastName() );
+
+        Name oneFemale = generator.generateName( Gender.FEMALE );
+        assertSame( Gender.FEMALE, oneFemale.getGender() );
+        assertNotNull( oneFemale.getFirstName() );
+        assertNotNull( oneFemale.getLastName() );
+
+        //The generator should be able to generate multiple names
+
+        List<Name> femaleNames = generator.generateNames(1000, Gender.FEMALE);
+        List<Name> maleNames   = generator.generateNames(1900, Gender.MALE);
 
         assertEquals( 1000, femaleNames.size() );
         assertEquals( 1900, maleNames.size() );
@@ -80,5 +103,28 @@ public class NameGeneratorTest {
         for( Name name : maleNames ) {
             assertEquals( name.getGender(), Gender.MALE );
         }
+    }
+
+    @Test
+    public void generatedNamesShouldBeCapitalized() {
+
+        List<Name> names = generator.generateNames(1000);
+        for( Name name : names ) {
+            assertTrue( isCapitalized( name.getFirstName() ) );
+            assertTrue( isCapitalized( name.getLastName() ) );
+        }
+    }
+
+    /**
+     * Determines if the first letter of a string is uppercase, and the rest lowercase.
+     * @param string
+     * @return
+     */
+    private boolean isCapitalized( String string ) {
+        String[] parts = new String[]{
+            string.substring(0,0), string.substring(1)
+        };
+
+        return parts[0].toUpperCase().equals( parts[0] ) && parts[1].toLowerCase().equals( parts[1] );
     }
 }

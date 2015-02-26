@@ -15,8 +15,6 @@
  */
 package org.ajbrown.namemachine;
 
-import java.util.List;
-
 /**
  * NameMachine generates random names.
  *
@@ -47,20 +45,19 @@ public class NameMachine {
             gender = Gender.valueOf( args[1].replace( "s", "" ).toUpperCase() );
         }
 
-
         NameGenerator generator = new NameGenerator();
-        outputNames( generator.generateNames( count, gender ) );
+        for( int i = 0; i < count; i++ ) {
+           outputName( generator.generateName( gender ) );
+        }
 
         System.exit(0);
     }
 
     /**
-     * Outputs the the list of names to the console.
-     * @param names
+     * Formats a name and outputs it to STD_OUT
+     * @param name
      */
-    protected static void outputNames( List<Name> names ) {
-        for( Name name : names ) {
-            System.out.println( name.toString() );
-        }
+    protected static void outputName( Name name ) {
+        System.out.println( name.toString() );
     }
 }
