@@ -23,7 +23,7 @@ List<Name> names = generator.generateNames( 1000, Gender.FEMALE );
 List<Name> names = generator.generateNames( 5000 );
 ```
 
-It can also be run on the command line to output random numbers:
+It can also be run on the command line to output random names:
 
 ```bash
 
