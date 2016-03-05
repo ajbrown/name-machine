@@ -40,13 +40,18 @@ public class NameGenerator {
     private static final String SURNAMES_FILE     = "/org/ajbrown/namemachine/dist.all.last.txt";
 
     private final Random random = new Random();
+    private final NameGeneratorOptions options;
 
     private TreeMap<Float,String> surnames;
     private TreeMap<Float,String> females;
     private TreeMap<Float,String> males;
 
     public NameGenerator() {
+        this( new NameGeneratorOptions() );
+    }
 
+    public NameGenerator(NameGeneratorOptions options ) {
+        this.options = options;
         try {
             surnames = loadNames( SURNAMES_FILE );
             females  = loadNames( FEMALE_NAMES_FILE );
@@ -71,12 +76,13 @@ public class NameGenerator {
      */
     public Name generateName( Gender gender ) {
         if( gender == null ) {
-            gender = (random.nextFloat() * 100) > 48 ? Gender.FEMALE : Gender.MALE;
+            gender = (random.nextFloat() * 100) <= options.getGenderWeight() ? Gender.FEMALE : Gender.MALE;
         }
         return new Name(
             pickName( gender == Gender.FEMALE ? females : males ),
             pickName( surnames ),
-            gender );
+            gender
+        );
     }
 
     /**

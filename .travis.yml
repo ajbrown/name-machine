@@ -1,5 +1,5 @@
 language: java
-script: "./gradlew clean build cobertura"
+script: "./gradlew clean build jacocoTestReport"
 jdk:
 - oraclejdk8
 - oraclejdk7
@@ -17,5 +17,5 @@ notifications:
     on_failure: always  # options: [always|never|change] default: always
     on_start: false     # default: false
 after_success:
-- "./gradlew coveralls"
+- "./gradlew jacocoTestReport coveralls"
 - if [ "$TRAVIS_BRANCH" == "master" ] && [ ! $TRAVIS_PULL_REQUEST ]; then ./gradlew bintrayUpload -PbintrayUsername=$BINTRAY_USER -PbintrayApiKey=$BINTRAY_API_KEY; fi

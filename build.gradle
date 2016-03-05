@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'net.saliman:gradle-cobertura-plugin:2.2.5'
+        classpath 'net.saliman:gradle-cobertura-plugin:2.3.1'
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1'
         classpath 'nl.javadude.gradle.plugins:license-gradle-plugin:0.11.0'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.6'
@@ -31,6 +31,7 @@ repositories {
 
 dependencies {
     testCompile 'junit:junit:4.11'
+    testCompile 'org.mockito:mockito-core:2.0.43-beta'
 }
 
 task sourcesJar(type: Jar) {

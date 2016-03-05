@@ -21,6 +21,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 /**
  * Unit Test for {@link org.ajbrown.namemachine.NameGenerator}
@@ -34,6 +35,16 @@ public class NameGeneratorTest {
     @Before
     public void setUp() {
         generator = new NameGenerator();
+    }
+
+    @Test
+    public void providedOptionsAreUsed() {
+        NameGeneratorOptions options = mock(NameGeneratorOptions.class);
+        NameGenerator generator = new NameGenerator( options );
+
+        generator.generateName();
+
+        verify(options).getGenderWeight();
     }
 
     @Test
