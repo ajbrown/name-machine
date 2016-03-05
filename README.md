@@ -1,8 +1,11 @@
-Name Machine
------------------------
 [![Build Status](https://travis-ci.org/ajbrown/NameMachine.svg?branch=develop)](https://travis-ci.org/ajbrown/NameMachine)
 [![Coverage Status](https://coveralls.io/repos/ajbrown/NameMachine/badge.svg?branch=develop)](https://coveralls.io/r/ajbrown/NameMachine)
+[![Download](https://api.bintray.com/packages/ajbrown/maven/NameMachine/images/download.svg) ](https://bintray.com/ajbrown/maven/NameMachine/_latestVersion)
 [![Join the chat at https://gitter.im/ajbrown/NameMachine](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ajbrown/NameMachine?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Say thanks with a donation](https://button.flattr.com/flattr-badge-large.png)](https://flattr.com/submit/auto?fid=3pepqd&url=https%3A%2F%2Fgithub.com%2Fajbrown%2FNameMachine")
+
+Name Machine
+-----------------------
 
 
 Name machine is a Java utility for generating random names with realistic probabilities of occurrence.  In other words,
@@ -30,6 +33,21 @@ java -jar NameMachine.jar 1000 females
 
 java -jar NameMachine.jar 5000
 
+```
+
+#### Gender probability
+
+When generating names for both genders, there is a slightly higher chance of generating a female name than a male name.  
+This is in line with the real-world male-to-female ratio in the United States.  This ratio can be adjusted for your specifc
+ application using the `NameGeneratorOptions`:
+ 
+```java
+NameGeneratorOptions options = new NameGeneratorOptions();
+
+//Heavily prefer male names.
+options.setGenderWeight( 12.23 );
+NameGenerator generator = new NameGenerator( options );
+generator.generateNames( 1000 );
 ```
 
 
