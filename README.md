@@ -54,8 +54,7 @@ generator.generateNames( 1000 );
 #### Limitations
 
 - The maximum number of random names you can generate in one pass is bound to integer max.  However, that's on order of 2 billion names on 32 bit systems.  At the time of writing there were only an estimated 7 billion humans on the planet, and most of those people don't have American names.  I just wasted your time describing a limitation that is actually not a limitation.
-
-- There are only 4275 female first names and 1219 male first names represented.  However, with the 88 thousand last names, there are about **380 million** female and **108 million** male full name combinations available.
+- There are only 4275 female first names and 1219 male first names represented.  However, with over 150 thousand last names, there are about **645 million** female and **184 million** male full name combinations available.
 
 
 #### How Does it Work?
@@ -97,14 +96,14 @@ dependencies {
  <dependency>
    <groupId>org.ajbrown</groupId>
    <artifactId>NameMachine</artifactId>
-   <version>0.1.1</version>
+   <version>0.2.0</version>
  </dependency>
 </dependencies>
 ```
 
 #### About the Author
 
-You can always contact me directly with your questions, suggestions, or friendly conversation:
+You can always contact me directly with your questions, suggestions, or friendly conversation.
 
 - **Email:** aj AT ajbrown DOT org
 - **Twitter:** [@adrianjbrown](https://twitter.com/adrianjbrown)
