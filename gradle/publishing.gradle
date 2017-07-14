@@ -6,8 +6,9 @@ ext {
     buildTime = new SimpleDateFormat('HH:mm:ss.SSSZ').format(buildTimeAndDate)
 }
 
-apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven'
+apply plugin: 'signing'
+apply plugin: 'io.codearte.nexus-staging'
 
 jar {
     manifest {
@@ -27,66 +28,56 @@ jar {
     }
 }
 
-def pomConfig = {
-    name project.name
-    description project.project_description
-    url project.project_url
-    inceptionYear '2015'
-    licenses {
-        license([:]) {
-            name 'The Apache Software License, Version 2.0'
+signing {
+    sign configurations.archives
+}
+
+nexusStaging {
+  username = ossrhUsername
+  password = ossrhPassword
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      pom.project {
+        name project.name
+        packaging 'jar'
+        artifactId 'name-machine'
+        description project.project_description
+        url project.project_url
+
+        scm {
+          connection 'scm:git:git@github.com:ajbrown/name-machine.git'
+          developerConnection 'scm:git:git@github.com:ajbrown/name-machine.git'
+          url project.project_scm
+        }
+
+        licenses {
+          license {
+            name 'The Apache License, Version 2.0'
             url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-            distribution 'repo'
+          }
         }
-    }
-    scm {
-        url project.project_scm
-    }
-    developers {
-        [
-                ajbrown: 'A.J. Brown'
-        ].each { devId, devName ->
-            developer {
-                id devId
-                name devName
-                roles {
-                    role 'Developer'
-                }
-            }
+
+        developers {
+          developer {
+            id 'ajbrown'
+            name 'A.J. Brown'
+            email 'aj@ajbrown.org'
+          }
         }
+      }
     }
-}
-
-publishing {
-    publications {
-        mavenCustom(MavenPublication) {
-            from components.java
-            artifact sourcesJar
-
-            pom.withXml {
-                asNode().children().last() + pomConfig
-            }
-        }
-    }
-}
-
-if (!project.hasProperty('bintrayUsername')) ext.bintrayUsername = ''
-if (!project.hasProperty('bintrayApiKey')) ext.bintrayApiKey = ''
-
-bintray {
-    user = project.bintrayUsername
-    key = project.bintrayApiKey
-    publications = ['mavenCustom']
-    publish = true
-    pkg {
-        repo = project.project_bintray_repo
-        name = project.name
-        desc = project.project_description
-        licenses = ['Apache-2.0']
-        labels = []
-        websiteUrl = project.project_url
-        issueTrackerUrl = project.project_issues
-        vcsUrl = project.project_scm
-        publicDownloadNumbers = true
-    }
+  }
 }
