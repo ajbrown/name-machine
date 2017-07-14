@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/ajbrown/NameMachine.svg?branch=master)](https://travis-ci.org/ajbrown/NameMachine)
+[![Build Status](https://travis-ci.org/ajbrown/name-machine.svg?branch=master)](https://travis-ci
+.org/ajbrown/name-machine)
 [![Coverage Status](https://coveralls.io/repos/ajbrown/NameMachine/badge.svg?branch=master)](https://coveralls.io/r/ajbrown/NameMachine)
 [![Maven Central](https://img.shields.io/maven-central/v/org.ajbrown/name-machine.svg)]()
 [![Join the chat at https://gitter.im/ajbrown/NameMachine](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ajbrown/NameMachine?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
