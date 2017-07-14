@@ -18,46 +18,49 @@ package org.ajbrown.namemachine;
 /**
  * NameMachine generates random names.
  *
- * @author A.J. Brown <aj@ajbrown.org>
+ * @author A.J. Brown <a href="mailto:aj@ajbrown.org">aj@ajbrown.org</a>
  */
-public class NameMachine {
+public class NameMachine
+{
 
-    /**
-     * Generate random names and send them to standard out.
-     * @param args first argument is the number of names to generate, the second argument is the gender
-     */
-    public static void main( String[] args ) {
+  /**
+   * Generate random names and send them to standard out.
+   *
+   * @param args first argument is the number of names to generate, the second argument is the gender
+   */
+  public static void main(final String[] args) {
 
-        if ( args.length == 0 ) {
-            System.err.print( "You must specify the number of names to generate" );
-        }
-
-        Integer count = Integer.parseInt( args[0] );
-
-        if( count < 0 ) {
-            throw new IllegalArgumentException( "Name count must be a positive number." );
-        }
-
-        Gender gender = null;
-
-        if( args.length > 1 ) {
-            // gender can be specified in either plural or singular form.
-            gender = Gender.valueOf( args[1].replace( "s", "" ).toUpperCase() );
-        }
-
-        NameGenerator generator = new NameGenerator();
-        for( int i = 0; i < count; i++ ) {
-           outputName( generator.generateName( gender ) );
-        }
-
-        System.exit(0);
+    if (args.length == 0) {
+      System.err.print("You must specify the number of names to generate");
     }
 
-    /**
-     * Formats a name and outputs it to STD_OUT
-     * @param name
-     */
-    protected static void outputName( Name name ) {
-        System.out.println( name.toString() );
+    Integer count = Integer.parseInt(args[0]);
+
+    if (count < 0) {
+      throw new IllegalArgumentException("Name count must be a positive number.");
     }
+
+    Gender gender = null;
+
+    if (args.length > 1) {
+      // gender can be specified in either plural or singular form.
+      gender = Gender.valueOf(args[1].replace("s", "").toUpperCase());
+    }
+
+    NameGenerator generator = new NameGenerator();
+    for (int i = 0; i < count; i++) {
+      outputName(generator.generateName(gender));
+    }
+
+    System.exit(0);
+  }
+
+  /**
+   * Formats a name and outputs it to STD_OUT
+   *
+   * @param name the name to format.
+   */
+  protected static void outputName(final Name name) {
+    System.out.println(name.toString());
+  }
 }

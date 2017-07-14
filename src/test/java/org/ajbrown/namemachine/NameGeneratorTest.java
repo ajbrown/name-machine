@@ -25,7 +25,7 @@ import static org.mockito.Mockito.*;
 
 /**
  * Unit Test for {@link org.ajbrown.namemachine.NameGenerator}
- * @author A.J. Brown <aj@ajbrown.org>
+ * @author A.J. Brown <a href="mailto:aj@ajbrown.org">aj@ajbrown.org</a>
  */
 public class NameGeneratorTest {
 
