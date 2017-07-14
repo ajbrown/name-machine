@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
 /**
  * Unit Test for {@link org.ajbrown.namemachine.Name}
  *
- * @author A.J. Brown <aj@ajbrown.org>
+ * @author A.J. Brown <a href="mailto:aj@ajbrown.org">aj@ajbrown.org</a>
  */
 public class NameTest {
 

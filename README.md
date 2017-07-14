@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/ajbrown/NameMachine.svg?branch=master)](https://travis-ci.org/ajbrown/NameMachine)
 [![Coverage Status](https://coveralls.io/repos/ajbrown/NameMachine/badge.svg?branch=master)](https://coveralls.io/r/ajbrown/NameMachine)
-[![Download](https://api.bintray.com/packages/ajbrown/maven/NameMachine/images/download.svg) ](https://bintray.com/ajbrown/maven/NameMachine/_latestVersion)
+[![Maven Central](https://img.shields.io/maven-central/v/org.ajbrown/name-machine.svg)]()
 [![Join the chat at https://gitter.im/ajbrown/NameMachine](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ajbrown/NameMachine?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Say thanks with a donation](https://button.flattr.com/flattr-badge-large.png)](https://flattr.com/submit/auto?fid=3pepqd&url=https%3A%2F%2Fgithub.com%2Fajbrown%2FNameMachine)
 
@@ -29,18 +29,18 @@ It can also be run on the command line to output random names:
 
 ```bash
 
-java -jar NameMachine.jar 1000 females
+java -jar name-machine.jar 1000 females
 
-java -jar NameMachine.jar 5000
+java -jar name-machine.jar 5000
 
 ```
 
 #### Gender probability
 
 When generating names for both genders, there is a slightly higher chance of generating a female name than a male name.  
-This is in line with the real-world male-to-female ratio in the United States.  This ratio can be adjusted for your specifc
+This is in line with the real-world male-to-female ratio in the United States.  This ratio can be adjusted for your specific
  application using the `NameGeneratorOptions`:
- 
+
 ```java
 NameGeneratorOptions options = new NameGeneratorOptions();
 
@@ -68,35 +68,22 @@ cumulative frequency than our random number.
 
 #### Installing
 
-Release versions of this library are sync'ed with [jCenter](https://bintray.com/bintray/jcenter).  Installation is as simple as adding it as a dependency
-
 ...to build.gradle:
 ```groovy
-repositories {
-    jCenter()
-}
 
 dependencies {
-    compile 'org.ajbrown:NameMachine:0.1.1'
+    compile 'org.ajbrown:name-machine:1.0.0'
 }
 ```
 
 
 ...to pom.xml:
 ```xml
-
-<repositories>
-  <repository>
-    <id>jcenter</id>
-    <url>http://jcenter.bintray.com</url>
-  </repository>
-</repositories>
-
 <dependencies>
  <dependency>
    <groupId>org.ajbrown</groupId>
-   <artifactId>NameMachine</artifactId>
-   <version>0.2.0</version>
+   <artifactId>name-machine</artifactId>
+   <version>1.0.0</version>
  </dependency>
 </dependencies>
 ```
