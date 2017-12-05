@@ -45,6 +45,7 @@ public class NameGeneratorTest {
         generator.generateName();
 
         verify(options).getGenderWeight();
+        verify(options, atLeastOnce()).getRandomSeed();
     }
 
     @Test
@@ -114,6 +115,45 @@ public class NameGeneratorTest {
         for( Name name : maleNames ) {
             assertEquals( name.getGender(), Gender.MALE );
         }
+    }
+
+    @Test
+    public void randomNamesAreGeneratedWithoutRandomSeed() {
+        NameGenerator generator = new NameGenerator();
+        Name oneNameCall1 = generator.generateName();
+        List<Name> namesCall1 = generator.generateNames( 1000 );
+
+        generator = new NameGenerator();
+        Name oneNameCall2 = generator.generateName();
+        List<Name> namesCall2 = generator.generateNames( 1000 );
+
+        assertNotEquals( oneNameCall1, oneNameCall2 );
+        assertNotEquals( namesCall1, namesCall2 );
+    }
+
+    @Test
+    public void randomNamesAreGeneratedWithRandomSeed() {
+        NameGeneratorOptions options = new NameGeneratorOptions();
+        options.setRandomSeed( 123L );
+
+        NameGenerator generator = new NameGenerator( options );
+        Name oneNameSeed123Call1 = generator.generateName();
+        List<Name> namesSeed123Call1 = generator.generateNames( 1000 );
+
+        generator = new NameGenerator( options );
+        Name oneNameSeed123Call2 = generator.generateName();
+        List<Name> namesSeed123Call2 = generator.generateNames( 1000 );
+
+        assertEquals( oneNameSeed123Call1, oneNameSeed123Call2 );
+        assertEquals( namesSeed123Call1, namesSeed123Call2 );
+
+        options.setRandomSeed( 456L );
+        generator = new NameGenerator( options );
+        Name oneNameSeed456 = generator.generateName();
+        List<Name> namesSeed456 = generator.generateNames( 1000 );
+
+        assertNotEquals( oneNameSeed123Call1, oneNameSeed456 );
+        assertNotEquals( namesSeed123Call1, namesSeed456 );
     }
 
     @Test

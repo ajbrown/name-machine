@@ -52,6 +52,20 @@ generator.generateNames( 1000 );
 ```
 
 
+#### Random seed
+
+If for some reason, the generated names need to be identical from one execution to another, a seed can be specified using the `NameGeneratorOptions`:
+
+```java
+NameGeneratorOptions options = new NameGeneratorOptions();
+
+//Get deterministic results by setting a random seed.
+options.setRandomSeed( 123L );
+NameGenerator generator = new NameGenerator( options );
+generator.generateNames( 1000 );
+```
+
+
 #### Limitations
 
 - The maximum number of random names you can generate in one pass is bound to integer max.  However, that's on order of 2 billion names on 32 bit systems.  At the time of writing there were only an estimated 7 billion humans on the planet, and most of those people don't have American names.  I just wasted your time describing a limitation that is actually not a limitation.
