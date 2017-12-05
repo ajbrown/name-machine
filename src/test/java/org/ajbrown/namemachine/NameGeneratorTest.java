@@ -60,7 +60,7 @@ public class NameGeneratorTest {
         //The generator should be able to generate multiple names
         List<Name> names = generator.generateNames(1000);
 
-        assert names.size() == 1000;
+        assertEquals( 1000, names.size() );
 
         //Note that there's a rare chance that this will fail even when things are working just fine.  We randomly
         // determine whether a name will be male or female on each pass, so it's plausible (but unlikely) that names
