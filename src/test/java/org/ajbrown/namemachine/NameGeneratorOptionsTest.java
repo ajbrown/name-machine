@@ -37,7 +37,7 @@ public class NameGeneratorOptionsTest {
         assertEquals( 48.8, options.getGenderWeight(), 0 );
 
         options.setGenderWeight( 55.0 );
-        assertEquals( 55.0, 55.0, 0 );
+        assertEquals( 55.0, options.getGenderWeight(), 0 );
     }
 
     @Test(expected=IllegalArgumentException.class)
