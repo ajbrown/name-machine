@@ -27,6 +27,8 @@ public class NameGeneratorOptions
 
   private double genderWeight = DEFAULT_GENDER_WEIGHT;
 
+  private Long randomSeed;
+
   /**
    * <p>Determines the probability of a female name being generated over a male name.  Only applies when generating
    * names for both genders.</p>
@@ -54,6 +56,25 @@ public class NameGeneratorOptions
     this.genderWeight = genderWeight;
   }
 
+  /**
+   * The seed used to initialize the pseudorandom number generator.
+   *
+   * @return the random seed
+   */
+  public Long getRandomSeed() {
+    return randomSeed;
+  }
+
+  /**
+   * Set the seed used to initialize the pseudorandom number generator.
+   *
+   * @param randomSeed A random seed.
+   * @see #getRandomSeed()
+   */
+  public void setRandomSeed(Long randomSeed) {
+    this.randomSeed = randomSeed;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -65,20 +86,25 @@ public class NameGeneratorOptions
 
     NameGeneratorOptions that = (NameGeneratorOptions) o;
 
-    return Double.compare(that.genderWeight, genderWeight) == 0;
-
+    if (Double.compare(that.genderWeight, genderWeight) != 0) return false;
+    return randomSeed != null ? randomSeed.equals(that.randomSeed) : that.randomSeed == null;
   }
 
   @Override
   public int hashCode() {
-    long temp = Double.doubleToLongBits(genderWeight);
-    return (int) (temp ^ (temp >>> 32));
+    int result;
+    long temp;
+    temp = Double.doubleToLongBits(genderWeight);
+    result = (int) (temp ^ (temp >>> 32));
+    result = 31 * result + (randomSeed != null ? randomSeed.hashCode() : 0);
+    return result;
   }
 
   @Override
   public String toString() {
     return "NameGeneratorOptions{" +
         "genderWeight=" + genderWeight +
+        ", randomSeed=" + randomSeed +
         '}';
   }
 }

@@ -1,14 +1,17 @@
 language: java
 script: "./gradlew clean build jacocoTestReport"
 jdk:
-- oraclejdk8
-- oraclejdk7
+  - oraclejdk8
+  - oraclejdk9
+  - oraclejdk10
+  - openjdk10
+  - openjdk11
 env:
   matrix:
-  - TERM=dumb
+    - TERM=dumb
   global:
-  - secure: nruTpnbQKv7cxSx91U6to1Lk0FA1AJhRKQJiFx0JBJ2ZdGJugoHt8ck1Jca+XcBzEZODOvVOg8JaZ6llnzPYVfnQE6RFbLPIDS17Z/l/5uiPRFMiVPFEeZ8sbojzY+Ee1SJThNzLH+Q97CkjMc03hgqQ/76lANPGCU0gz/nXWqM=
-  - secure: K3p+GOeQPZKVKqGPPavt+OJa09zsnTnT+edguiFqc0uMmOr+MGMAYMAtOOfEqq5QxC4fo3ZlQ/HY9ptoaGTHFykOrWintrHSLzcasdwk1nAezPKUpmlRS6AUf3fbBdE7VKQ28ArDyczYXlWThOUipXX1kuHi/Oa1wRjigZPxneY=
+    - secure: nruTpnbQKv7cxSx91U6to1Lk0FA1AJhRKQJiFx0JBJ2ZdGJugoHt8ck1Jca+XcBzEZODOvVOg8JaZ6llnzPYVfnQE6RFbLPIDS17Z/l/5uiPRFMiVPFEeZ8sbojzY+Ee1SJThNzLH+Q97CkjMc03hgqQ/76lANPGCU0gz/nXWqM=
+    - secure: K3p+GOeQPZKVKqGPPavt+OJa09zsnTnT+edguiFqc0uMmOr+MGMAYMAtOOfEqq5QxC4fo3ZlQ/HY9ptoaGTHFykOrWintrHSLzcasdwk1nAezPKUpmlRS6AUf3fbBdE7VKQ28ArDyczYXlWThOUipXX1kuHi/Oa1wRjigZPxneY=
 notifications:
   webhooks:
     urls:
@@ -17,5 +20,5 @@ notifications:
     on_failure: always  # options: [always|never|change] default: always
     on_start: false     # default: false
 after_success:
-- "./gradlew jacocoTestReport coveralls"
-- if [ "$TRAVIS_BRANCH" == "master" ] && [ ! $TRAVIS_PULL_REQUEST ]; then ./gradlew bintrayUpload -PbintrayUsername=$BINTRAY_USER -PbintrayApiKey=$BINTRAY_API_KEY; fi
+  - "./gradlew jacocoTestReport coveralls"
+  - if [ "$TRAVIS_BRANCH" == "master" ] && [ ! $TRAVIS_PULL_REQUEST ]; then ./gradlew bintrayUpload -PbintrayUsername=$BINTRAY_USER -PbintrayApiKey=$BINTRAY_API_KEY; fi

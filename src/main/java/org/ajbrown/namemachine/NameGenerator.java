@@ -42,7 +42,7 @@ public class NameGenerator
 
   private static final String SURNAMES_FILE = "/org/ajbrown/namemachine/dist.all.last.txt";
 
-  private final Random random = new Random();
+  private final Random random;
 
   private final NameGeneratorOptions options;
 
@@ -58,6 +58,11 @@ public class NameGenerator
 
   public NameGenerator(NameGeneratorOptions options) {
     this.options = options;
+    if (options.getRandomSeed() == null) {
+      this.random = new Random();
+    } else {
+      this.random = new Random( options.getRandomSeed() );
+    }
     try {
       surnames = loadNames(SURNAMES_FILE);
       females = loadNames(FEMALE_NAMES_FILE);
