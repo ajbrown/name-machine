@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/ajbrown/name-machine.svg?branch=develop)](https://travis-ci.org/ajbrown/name-machine)
+[![Build Status](https://travis-ci.org/ajbrown/name-machine.svg?branch=master)](https://travis-ci.org/ajbrown/name-machine)
 [![DepShield Badge](https://depshield.sonatype.org/badges/ajbrown/name-machine/depshield.svg)](https://depshield.github.io)
-[![Coverage Status](https://coveralls.io/repos/ajbrown/NameMachine/badge.svg?branch=develop)](https://coveralls.io/r/ajbrown/NameMachine)
+[![Coverage Status](https://coveralls.io/repos/ajbrown/NameMachine/badge.svg?branch=master)](https://coveralls.io/r/ajbrown/NameMachine)
 [![Maven Central](https://img.shields.io/maven-central/v/org.ajbrown/name-machine.svg)]()
 [![Join the chat at https://gitter.im/ajbrown/NameMachine](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ajbrown/NameMachine?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Say thanks with a donation](https://button.flattr.com/flattr-badge-large.png)](https://flattr.com/submit/auto?fid=3pepqd&url=https%3A%2F%2Fgithub.com%2Fajbrown%2FNameMachine)
@@ -86,7 +86,7 @@ cumulative frequency than our random number.
 ```groovy
 
 dependencies {
-    compile 'org.ajbrown:name-machine:1.0.0'
+    compile 'org.ajbrown:name-machine:1.1.0'
 }
 ```
 
@@ -97,7 +97,7 @@ dependencies {
  <dependency>
    <groupId>org.ajbrown</groupId>
    <artifactId>name-machine</artifactId>
-   <version>1.0.0</version>
+   <version>1.1.0</version>
  </dependency>
 </dependencies>
 ```
