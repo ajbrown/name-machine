@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/ajbrown/name-machine.svg?branch=master)](https://travis-ci.org/ajbrown/name-machine)
+[![Build Status](https://travis-ci.org/ajbrown/name-machine.svg?branch=develop)](https://travis-ci.org/ajbrown/name-machine)
 [![DepShield Badge](https://depshield.sonatype.org/badges/ajbrown/name-machine/depshield.svg)](https://depshield.github.io)
-[![Coverage Status](https://coveralls.io/repos/ajbrown/NameMachine/badge.svg?branch=master)](https://coveralls.io/r/ajbrown/NameMachine)
+[![Coverage Status](https://coveralls.io/repos/ajbrown/NameMachine/badge.svg?branch=develop)](https://coveralls.io/r/ajbrown/NameMachine)
 [![Maven Central](https://img.shields.io/maven-central/v/org.ajbrown/name-machine.svg)]()
 [![Join the chat at https://gitter.im/ajbrown/NameMachine](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ajbrown/NameMachine?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Say thanks with a donation](https://button.flattr.com/flattr-badge-large.png)](https://flattr.com/submit/auto?fid=3pepqd&url=https%3A%2F%2Fgithub.com%2Fajbrown%2FNameMachine)
@@ -74,8 +74,7 @@ generator.generateNames( 1000 );
 
 #### How Does it Work?
 
-The name files used to generate random names are provides by the 1990 U.S. Census data.  The originals are [available on the web]
-(http://www.census.gov/topics/population/genealogy/data/1990_census/1990_census_namefiles.html).  Along with the
+The name files used to generate random names are provides by the 1990 U.S. Census data.  The originals are [available on the web](http://www.census.gov/topics/population/genealogy/data/1990_census/1990_census_namefiles.html).  Along with the
 names in ranked order is the Frequency in percent, Cumulative frequency in percent, and the rank.
 
 We randomly select a name from the list by generating a random floating point number, and picking the first name that has a higher or equal
@@ -105,8 +104,10 @@ dependencies {
 
 #### About the Author
 
+I'm a product owner and technical leader that loves open source and building SaaS products at internet scale.  
 You can always contact me directly with your questions, suggestions, or friendly conversation.
 
 - **Email:** aj AT ajbrown DOT org
 - **Twitter:** [@adrianjbrown](https://twitter.com/adrianjbrown)
-- **Web:** [http://ajbrown.org](https://ajbrown.org)
+- **Web:** [ajbrown.org](https://ajbrown.org)
+- **LinkedIn** [linkedin.com/in/ajbrown/](https://www.linkedin.com/in/ajbrown/)
