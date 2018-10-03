@@ -19,6 +19,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 
 
 /**
@@ -36,7 +37,7 @@ public class NameGeneratorOptionsTest {
         assertEquals( 48.8, options.getGenderWeight(), 0 );
 
         options.setGenderWeight( 55.0 );
-        assertEquals( 55.0, 55.0, 0 );
+        assertEquals( 55.0, options.getGenderWeight(), 0 );
     }
 
     @Test(expected=IllegalArgumentException.class)
@@ -52,15 +53,42 @@ public class NameGeneratorOptionsTest {
     }
 
     @Test
+    public void testRandomSeedField() {
+        NameGeneratorOptions options = new NameGeneratorOptions();
+
+        options.setRandomSeed( 123L );
+        assertEquals( 123L, options.getRandomSeed().longValue() );
+
+        options.setRandomSeed( 456L );
+        assertEquals( 456L, options.getRandomSeed().longValue() );
+    }
+
+    @Test
+    public void testRandomSeedDefault() {
+        NameGeneratorOptions options = new NameGeneratorOptions();
+        assertNull( options.getRandomSeed() );
+    }
+
+    @Test
     public void testEquals() {
         NameGeneratorOptions a = new NameGeneratorOptions();
         NameGeneratorOptions b = new NameGeneratorOptions();
-
         assertEquals( a, b );
 
         a.setGenderWeight( 15 );
         b.setGenderWeight( 30 );
-
         assertNotEquals( a, b );
+
+        a.setGenderWeight( 30 );
+        assertEquals( a, b );
+
+        a.setRandomSeed( 123L );
+        assertNotEquals( a, b );
+
+        b.setRandomSeed( 456L );
+        assertNotEquals( a, b );
+
+        b.setRandomSeed( 123L );
+        assertEquals( a, b );
     }
 }

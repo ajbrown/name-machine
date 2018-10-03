@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/ajbrown/name-machine.svg?branch=develop)](https://travis-ci
-.org/ajbrown/name-machine)
+[![Build Status](https://travis-ci.org/ajbrown/name-machine.svg?branch=master)](https://travis-ci.org/ajbrown/name-machine)
 [![DepShield Badge](https://depshield.sonatype.org/badges/ajbrown/name-machine/depshield.svg)](https://depshield.github.io)
 [![Coverage Status](https://coveralls.io/repos/ajbrown/NameMachine/badge.svg?branch=master)](https://coveralls.io/r/ajbrown/NameMachine)
 [![Maven Central](https://img.shields.io/maven-central/v/org.ajbrown/name-machine.svg)]()
@@ -48,6 +47,20 @@ NameGeneratorOptions options = new NameGeneratorOptions();
 
 //Heavily prefer male names.
 options.setGenderWeight( 12.23 );
+NameGenerator generator = new NameGenerator( options );
+generator.generateNames( 1000 );
+```
+
+
+#### Random seed
+
+If for some reason, the generated names need to be identical from one execution to another, a seed can be specified using the `NameGeneratorOptions`:
+
+```java
+NameGeneratorOptions options = new NameGeneratorOptions();
+
+//Get deterministic results by setting a random seed.
+options.setRandomSeed( 123L );
 NameGenerator generator = new NameGenerator( options );
 generator.generateNames( 1000 );
 ```
